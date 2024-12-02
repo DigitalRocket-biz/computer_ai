@@ -1,0 +1,24 @@
+﻿version: '3'
+services:
+  computer-ai:
+    image: ghcr.io/anthropics/anthropic-quickstarts:computer-use-demo-latest
+    container_name: computer-ai
+    environment:
+      - ANTHROPIC_API_KEY=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
+      - WIDTH=1024
+      - HEIGHT=768
+      - BASE_URL=https://ai.digitalrocket.biz
+    volumes:
+      - anthropic-home:/home/computeruse
+      - anthropic-mozilla:/home/computeruse/.mozilla
+      - anthropic-apps:/usr/local
+    ports:
+      - "8080:8080"
+      - "8501:8501"
+      - "6080:6080"
+    restart: unless-stopped
+
+volumes:
+  anthropic-home:
+  anthropic-mozilla:
+  anthropic-apps:
